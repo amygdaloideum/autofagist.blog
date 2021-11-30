@@ -3,32 +3,47 @@
   --content-width: 60rem;
   /* SPACING */
   --m1: 0.6rem;
-  --m2: 1rem;
+  --m2: 1.2rem;
   --m3: 2.4rem;
+  /* COLORS */
+  --page-bg-color: white;
+  --text-color: var(--canvas-1);
+  --faded-text: var(--grey);
+  --funky-gradient: linear-gradient(
+    45deg,
+    #8d55ed,
+    rgb(240, 88, 174),
+    #be4da7,
+    #5f4ad7
+  );
 
-  --brand-hue: 195;
-  --brand-saturation: 100%;
-  --brand-lightness: 50%;
-  --brand: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
-
-  --text1: hsl(var(--brand-hue) var(--brand-saturation) 10%);
-  --text2: hsl(var(--brand-hue) 50% 30%);
-
-  --surface1: hsl(var(--brand-hue) 25% 90%);
-  --surface2: hsl(var(--brand-hue) 20% 99%);
-  --surface3: hsl(var(--brand-hue) 20% 92%);
-  --surface4: hsl(var(--brand-hue) 20% 85%);
-
-  --page-bg-color: var(--surface2);
-  --text-color: var(--text1);
+  --grey: #888;
+  --purple: #8d55ed;
+  --magenta: #be4da7;
+  --blue: #006ec5;
+  --teal: #08c3fe;
+  --indigo: #5f4ad7;
+  --canvas-1: #22212c;
+  --canvas-2: transparent;
+  --separator-color: rgba(50, 50, 50, 1);
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg-color: var(--canvas-1);
+    --text-color: rgb(248, 248, 242);
+  }
+}
+
+/* GENERAL LAYOUT */
 
 html,
 body {
   margin: 0;
-  font-size: 22px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: bold;
+  font-size: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-weight: 300;
   word-break: break-word;
   background: var(--page-bg-color);
   color: var(--text-color);
@@ -50,6 +65,14 @@ section {
 }
 
 /* TYPOGRAPHY */
+
+h1,
+h2 {
+  background-image: var(--funky-gradient);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
 
 h1:first-of-type,
 h2:first-child {
@@ -120,7 +143,7 @@ code {
 }
 .blog-post ol li:before {
   margin-right: 0.5rem;
-  content: counter(item) ". ";
+  content: counter(item) '. ';
   border-radius: 100%;
   color: white;
   text-align: center;
@@ -139,7 +162,7 @@ code {
 }
 .blog-post ul li:before {
   margin-right: 0.5rem;
-  content: counter(item) ". ";
+  content: counter(item) '. ';
   border-radius: 100%;
   color: white;
   text-align: center;
@@ -168,8 +191,9 @@ header h1 {
   margin: 0;
   padding: 0;
   padding-left: var(--m2);
-  font-weight: 500;
-  font-size: 3rem;
+  font-weight: 200;
+  font-size: 2rem;
+  color: var(--text-color);
 }
 
 header a {
@@ -203,7 +227,7 @@ footer content {
 
 .blog-post time {
   font-weight: 400;
-  color: var(--text2);
+  color: var(--grey);
   font-size: 1.5rem;
 }
 
@@ -214,16 +238,23 @@ footer content {
 /* POST LIST */
 
 ul.post-list {
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
+  margin: -0.5rem;
 }
 
 ul.post-list a {
-  display: block;
-  margin: .5rem 0;
-  padding: .5rem 1rem;
-  border-left: 4px solid var(--text2);
+  flex-grow: 1;
+  max-width: 25rem;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-left: 2px solid var(--blue);
+  border-right: 2px solid var(--blue);
+  border-radius: 0.5rem;
   text-decoration: none;
+  color: var(--text-color);
 }
 
 ul.post-list h4 {
@@ -249,7 +280,7 @@ ul.post-list p {
 
 @media (min-width: 1080px) {
   header h1 {
-    font-size: 6rem;
+    font-size: 3rem;
   }
 }
 
@@ -261,6 +292,6 @@ ul.post-list p {
     font-size: 3.5rem;
   }
   h2 {
-    font-size: 2.8rem;
+    font-size: 2rem;
   }
 }
